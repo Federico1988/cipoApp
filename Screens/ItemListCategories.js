@@ -5,14 +5,21 @@ import allProducts from '../Data/products.json'
 import ProductItem from '../Components/ProductItem'
 import { useEffect, useState } from 'react'
 
-const ItemListCategories = () => {
+const ItemListCategories = ({ category }) => {
 
     const [keyword, setKeyword] = useState("");
     const [filteredProducts, setfilteredProducts] = useState([]);
 
 
     useEffect(() => {
-        setfilteredProducts(allProducts.filter(product => product.title.toLowerCase().includes(keyword.toLowerCase())));
+        if (category) {
+            const prodCategory = allProducts.filter(prod => prod.category === category);
+            setfilteredProducts(prodCategory.filter(product => product.title.toLowerCase().includes(keyword.toLowerCase())));
+        }
+        else {
+            setfilteredProducts(allProducts.filter(product => product.title.toLowerCase().includes(keyword.toLowerCase())));
+
+        }
     }, [keyword]);
 
     return (
