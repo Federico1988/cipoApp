@@ -4,8 +4,9 @@ import Search from '../Components/Search'
 import allProducts from '../Data/products.json'
 import ProductItem from '../Components/ProductItem'
 import { useEffect, useState } from 'react'
+import { AntDesign, Entypo } from "@expo/vector-icons"
 
-const ItemListCategories = ({ category }) => {
+const ItemListCategories = ({ category,setSelectedCategory, setHeaderTitle }) => {
 
     const [keyword, setKeyword] = useState("");
     const [filteredProducts, setfilteredProducts] = useState([]);
@@ -13,6 +14,7 @@ const ItemListCategories = ({ category }) => {
 
     useEffect(() => {
         if (category) {
+            setHeaderTitle(category);
             const prodCategory = allProducts.filter(prod => prod.category === category);
             setfilteredProducts(prodCategory.filter(product => product.title.toLowerCase().includes(keyword.toLowerCase())));
         }
@@ -24,8 +26,8 @@ const ItemListCategories = ({ category }) => {
 
     return (
         <>
-            <Header />
             <Search keyword={keyword} setKeyword={setKeyword} />
+
             <FlatList
                 style={styles.container}
                 data={filteredProducts}
