@@ -29,8 +29,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "start"
-
+        justifyContent: "start",
     },
     image: {
         marginRight:30,
@@ -40,7 +39,10 @@ const styles = StyleSheet.create({
     },
     text:{
         fontSize:25,
-        fontFamily: 'RobotoLight'
+        fontFamily: 'RobotoLight',
+        flexWrap: 'wrap',
+        flex: 1,
+        
     }
 
 })
