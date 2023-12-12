@@ -9,10 +9,10 @@ const Search = ({ setKeyword }) => {
     const [error, setError] = useState("");
 
     const search = () => {
-        const regExHasNumber = /.*[0-9]*./;
+        setError("");
+        const regExHasNumber =  /\d/;
         if (regExHasNumber.test(input)) {
             setError("Error! No debe contener numeros");
-
         }
         else
             setKeyword(input);
@@ -52,6 +52,8 @@ const styles = StyleSheet.create({
         padding: 10,
         width: "70%",
         backgroundColor: colors.green2,
+        fontSize:20,
+        fontFamily: 'RobotoLightItalic',
 
     },
     searchContainer: {
