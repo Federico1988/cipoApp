@@ -2,11 +2,10 @@ import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { colors } from '../Global/colors'
 
 import { AntDesign, Entypo } from "@expo/vector-icons"
+import { fonts } from '../Global/fonts'
 
 
 const Header = ({ title = "Producto", setSelectedCategory }) => {
-    console.log("Header - setSelectedCategory:", setSelectedCategory);
-
     return (
         <View style={styles.container}>
             <View style={styles.titleContainer}>
@@ -38,7 +37,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     text: {
-        fontSize: 20,
+        fontSize: 30,
+        fontFamily: 'RobotoBlack'
     },
     backButton: {
 

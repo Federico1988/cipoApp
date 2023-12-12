@@ -37,5 +37,10 @@ const styles = StyleSheet.create({
         width: 50,
         height: 50,
         borderRadius:10
+    },
+    text:{
+        fontSize:25,
+        fontFamily: 'RobotoLight'
     }
+
 })

@@ -24,5 +24,10 @@ const styles = StyleSheet.create({
         padding: 10,
         justifyContent: "center",
         alignItems: "center",
+    },
+    text:{
+        fontFamily: 'RobotoLightItalic',
+        fontSize:20
     }
+
 })
