@@ -5,13 +5,17 @@ import { AntDesign, Entypo } from "@expo/vector-icons"
 
 
 const Header = ({ title = "Producto", setSelectedCategory }) => {
+    console.log("Header - setSelectedCategory:", setSelectedCategory);
+
     return (
         <View style={styles.container}>
+            <View style={styles.titleContainer}>
+                <Text style={styles.text}>{title}</Text>
+            </View>
 
-            <Pressable onPress={() => setSelectedCategory("")}>
+            <Pressable style={styles.backButton} onPress={() => setSelectedCategory("") /*No anda! Da is not a function*/}> 
                 <AntDesign name='back' color='black' size={25} />
             </Pressable>
-            <Text style={styles.text}>{title}</Text>
         </View>
     )
 }
@@ -22,14 +26,21 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: colors.green1,
         width: "100%",
-        justifyContent: "center",
-        alignItems: "center",
         paddingTop: 50,
         paddingBottom: 20,
-        flexDirection:"row"
-
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        paddingHorizontal: 20
+    },
+    titleContainer: {
+        flex: 1,
+        alignItems: "center",
     },
     text: {
-        fontSize: 20
-    }
+        fontSize: 20,
+    },
+    backButton: {
+
+    },
 })

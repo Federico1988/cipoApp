@@ -8,8 +8,8 @@ export default function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
   return (
     <View style={styles.container}>
-      {selectedCategory ? <ItemListCategories category={selectedCategory} /> :
-        <Home setSelectedCategory={setSelectedCategory} />}
+      {selectedCategory ? (<ItemListCategories category={selectedCategory} />) :
+        (<Home setSelectedCategory={setSelectedCategory} />)}
     </View >
   );
 }
