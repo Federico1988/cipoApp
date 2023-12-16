@@ -1,19 +1,19 @@
-import { StyleSheet, Text, View, Image, useWindowDimensions } from 'react-native'
+import { StyleSheet, Text, View, Image, useWindowDimensions, Pressable } from 'react-native'
 import React from 'react'
 import { colors } from '../Global/colors'
 
-const ProductItem = ({ item }) => {
+const ProductItem = ({ item, setProductDetailId }) => {
 
     const { width } = useWindowDimensions();
     return (
-        <View style={styles.container}>
+        <Pressable style={styles.container} onPress={setProductDetailId(item.id)}>
             <Image
                 style={width > 350 ? styles.imageMax : styles.imageMin}
                 resizeMode='cover'
                 source={{ uri: item.thumbnail }}
             />
             <Text style={width > 350 ? styles.textMax : styles.textMin}>{item.title}</Text>
-        </View>
+        </Pressable>
     )
 }
 
