@@ -1,21 +1,31 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, useWindowDimensions } from 'react-native'
 import React from 'react'
 import { colors } from '../Global/colors'
 
 const ProductItem = ({ item }) => {
+
+    const { width } = useWindowDimensions();
     return (
         <View style={styles.container}>
             <Image
-                style={styles.image}
+                style={width > 350 ? styles.imageMax : styles.imageMin}
                 resizeMode='cover'
                 source={{ uri: item.thumbnail }}
             />
-            <Text style={styles.text}>{item.title}</Text>
+            <Text style={width > 350 ? styles.textMax : styles.textMin}>{item.title}</Text>
         </View>
     )
 }
 
 export default ProductItem
+
+const commonTextStyle = {
+    fontFamily: 'RobotoLight',
+    flexWrap: 'wrap',
+    flex: 1,
+    textAlign: 'center',
+};
+
 
 const styles = StyleSheet.create({
     container: {
@@ -29,20 +39,31 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "start",
+        justifyContent: 'space-between',
     },
-    image: {
-        marginRight:30,
-        width: 50,
-        height: 50,
-        borderRadius:10
+    imageMin: {
+
+        marginRight: 10,
+        minWidth: 50,
+        minHeight: 50,
+        borderRadius: 5
     },
-    text:{
-        fontSize:25,
-        fontFamily: 'RobotoLight',
-        flexWrap: 'wrap',
-        flex: 1,
-        
-    }
+
+    imageMax: {
+
+        marginRight: 30,
+        minWidth: 90,
+        minHeight: 90,
+        borderRadius: 10
+    },
+    textMax: {
+        ...commonTextStyle,
+        fontSize: 25,
+    },
+    textMin: {
+        ...commonTextStyle,
+        fontSize: 15,
+    },
+
 
 })

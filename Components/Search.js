@@ -1,4 +1,4 @@
-import { StyleSheet, TextInput, Text, Pressable, View } from 'react-native'
+import { StyleSheet, TextInput, Text, Pressable, View, useWindowDimensions } from 'react-native'
 import { colors } from '../Global/colors'
 import { AntDesign, Entypo } from "@expo/vector-icons"
 import { useState } from 'react'
@@ -7,10 +7,11 @@ const Search = ({ setKeyword }) => {
 
     const [input, setInput] = useState("");
     const [error, setError] = useState("");
+    const { width } = useWindowDimensions();
 
     const search = () => {
         setError("");
-        const regExHasNumber =  /\d/;
+        const regExHasNumber = /\d/;
         if (regExHasNumber.test(input)) {
             setError("Error! No debe contener numeros");
         }
@@ -25,12 +26,12 @@ const Search = ({ setKeyword }) => {
     return (
         <View style={styles.container}>
             <View style={styles.searchContainer}>
-                <TextInput style={styles.input} placeholder='Buscar' value={input} onChangeText={(t) => setInput(t)} />
+                <TextInput style={width > 350 ? styles.inputMax : styles.inputMin} placeholder='Buscar' value={input} onChangeText={(t) => setInput(t)} />
                 <Pressable onPress={() => { search() }}>
-                    <AntDesign name='search1' color='black' size={25} />
+                    <AntDesign name='search1' color='black' size={width > 350 ? 40 : 20} />
                 </Pressable>
                 <Pressable onPress={() => resetSearch()}>
-                    <Entypo name='erase' color='black' size={25} />
+                    <Entypo name='erase' color='black' size={width > 350 ? 40 : 20} />
                 </Pressable>
             </View>
             {error ? <Text style={styles.errorStyle}>{error}</Text> : null}
@@ -45,22 +46,33 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: colors.green1,
         width: "100%",
+        alignItems: "center"
     },
-    input: {
+    inputMax: {
         borderWidth: 2,
         borderRadius: 5,
         padding: 10,
         width: "70%",
         backgroundColor: colors.green2,
-        fontSize:20,
+        fontSize: 25,
         fontFamily: 'RobotoLightItalic',
-
+    },
+    inputMin: {
+        borderWidth: 2,
+        borderRadius: 3,
+        padding: 5,
+        width: "70%",
+        backgroundColor: colors.green2,
+        fontSize: 15,
+        fontFamily: 'RobotoLightItalic',
     },
     searchContainer: {
+        width: "80%",
         flexDirection: "row",
         alignItems: "center",
         padding: 10,
-        gap: 10
+        gap: 10,
+        justifyContent: 'space-between'
 
     },
     errorStyle: {
