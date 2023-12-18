@@ -1,18 +1,16 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
-import Header from '../Components/Header'
+import { Pressable, StyleSheet, Text, View,Image } from 'react-native'
 import allProducts from "../Data/products.json"
 import { useEffect, useState } from 'react'
 
-const ItemDetail = ({ productDetalId }) => {
-
+const ItemDetail = ({ route }) => {
+    const { id } = route.params;
     const [prod, setProd] = useState({});
 
     useEffect(() => {
-        setProd(allProducts.find(prod => prod.id === productDetalId));
-    }, [productDetalId])
+        setProd(allProducts.find(prod => prod.id === id));
+    }, [id])
     return (
         <View style={styles.container}>
-            <Header />
             <Image
                 style={styles.image}
                 source={{ uri: prod.thumbnail }}
@@ -31,7 +29,7 @@ export default ItemDetail
 const styles = StyleSheet.create({
     container: {
         width: "100%",
-        flex: "1",
+        flex: 1,
         justifyContent: "center",
         alignItems: "center",
     },

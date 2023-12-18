@@ -1,19 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import Home from './Screens/Home';
-import ItemListCategories from './Screens/ItemListCategories';
 import { useState } from 'react'
-import Header from './Components/Header';
 import { useFonts } from 'expo-font';
 import { fonts } from './Global/fonts';
-import { SafeAreaView } from 'react-native-web';
 import { colors } from './Global/colors';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import Navigator from './Navigation/Navigator';
+
 
 export default function App() {
   const [fontsLoaded] = useFonts(fonts);
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [productDetailId, setProductDetailId] = useState("");
-  const [headerTitle, setHeaderTitle] = useState("Categorias");
   if (!fontsLoaded)
     return null;
   return (
@@ -22,9 +18,11 @@ export default function App() {
         backgroundColor={colors.green1}
         barStyle="default"
       />
-      <SafeAreaView style={styles.container}>
 
-        <Header setSelectedCategory={setSelectedCategory} title={headerTitle} />
+      <Navigator />
+      {/*<SafeAreaView style={styles.container}>
+
+         <Header setSelectedCategory={setSelectedCategory} title={headerTitle} />
         {selectedCategory ?
           (<ItemListCategories
             category={selectedCategory}
@@ -32,8 +30,8 @@ export default function App() {
             setHeaderTitle={setHeaderTitle}
             setProductDetailId={setProductDetailId}
           />) :
-          (<Home setSelectedCategory={setSelectedCategory} setHeaderTitle={setHeaderTitle} />)}
-      </SafeAreaView >
+          (<Home setSelectedCategory={setSelectedCategory} setHeaderTitle={setHeaderTitle} />)} 
+      </SafeAreaView >*/}
     </>
   );
 }

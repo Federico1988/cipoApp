@@ -3,9 +3,9 @@ import React from 'react'
 import { colors } from '../Global/colors'
 import CardShadow from '../Wrappers/CardShadow'
 
-const CategoryItem = ({ category, setSelectedCategory }) => {
+const CategoryItem = ({ category, navigation, route }) => {
     return (
-        <Pressable onPress={()=>setSelectedCategory(category)}>
+        <Pressable onPress={() => navigation.navigate("Category", { category })}>
             <CardShadow style={styles.container}>
                 <Text style={styles.text}>{category}</Text>
             </CardShadow>
@@ -25,9 +25,9 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     },
-    text:{
+    text: {
         fontFamily: 'RobotoLightItalic',
-        fontSize:20
+        fontSize: 20
     }
 
 })

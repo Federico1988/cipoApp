@@ -12,7 +12,7 @@ const Header = ({ title = "Producto", setSelectedCategory }) => {
                 <Text style={styles.text}>{title}</Text>
             </View>
 
-            <Pressable style={styles.backButton} onPress={() => setSelectedCategory("") /*No anda! Da is not a function*/}> 
+            <Pressable style={styles.backButton} onPress={() => setSelectedCategory("") }> 
                 <AntDesign name='back' color='black' size={25} />
             </Pressable>
         </View>

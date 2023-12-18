@@ -6,15 +6,14 @@ import ProductItem from '../Components/ProductItem'
 import { useEffect, useState } from 'react'
 import { AntDesign, Entypo } from "@expo/vector-icons"
 
-const ItemListCategories = ({ category, setSelectedCategory, setHeaderTitle, setProductDetailId }) => {
-
+const ItemListCategories = ({ navigation, route }) => {
+    const { category } = route.params;
     const [keyword, setKeyword] = useState("");
     const [filteredProducts, setfilteredProducts] = useState([]);
 
 
     useEffect(() => {
         if (category) {
-            setHeaderTitle(category);
             const prodCategory = allProducts.filter(prod => prod.category === category);
             setfilteredProducts(prodCategory.filter(product => product.title.toLowerCase().includes(keyword.toLowerCase())));
         }
@@ -33,8 +32,9 @@ const ItemListCategories = ({ category, setSelectedCategory, setHeaderTitle, set
                 data={filteredProducts}
                 keyExtractor={item => item.id}
                 renderItem={({ item }) => <ProductItem
+                    navigation={navigation}
+                    route={route}
                     item={item}
-                    setProductDetailId={setProductDetailId}
                 />}
             />
         </>
