@@ -5,6 +5,7 @@ import allProducts from '../Data/products.json'
 import ProductItem from '../Components/ProductItem'
 import { useEffect, useState } from 'react'
 import { AntDesign, Entypo } from "@expo/vector-icons"
+import { colors } from '../Global/colors';
 
 const ItemListCategories = ({ navigation, route }) => {
     const { category } = route.params;
@@ -45,7 +46,8 @@ export default ItemListCategories
 
 const styles = StyleSheet.create({
     container: {
-        width: "100%"
+        width: "100%",
+        backgroundColor: colors.secondaryColor1
     }
 
 })

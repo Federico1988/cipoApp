@@ -15,7 +15,7 @@ export default function App() {
   return (
     <>
       <StatusBar
-        backgroundColor={colors.green1}
+        backgroundColor={colors.mainColor1}
         barStyle="default"
       />
 

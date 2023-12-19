@@ -30,7 +30,7 @@ const commonTextStyle = {
 const styles = StyleSheet.create({
     container: {
         width: "80%",
-        backgroundColor: colors.green1,
+        backgroundColor: colors.mainColor1,
         margin: 10,
         marginHorizontal: "10%",
         marginVertical: 10,

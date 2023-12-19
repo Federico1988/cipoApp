@@ -22,6 +22,7 @@ const Search = ({ setKeyword }) => {
     const resetSearch = () => {
         setInput("");
         setError("");
+        setKeyword("");
     }
     return (
         <View style={styles.container}>
@@ -44,7 +45,7 @@ export default Search
 const styles = StyleSheet.create({
 
     container: {
-        backgroundColor: colors.green1,
+        backgroundColor: colors.mainColor1,
         width: "100%",
         alignItems: "center"
     },
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         padding: 10,
         width: "70%",
-        backgroundColor: colors.green2,
+        backgroundColor: colors.mainColor2,
         fontSize: 25,
         fontFamily: 'RobotoLightItalic',
     },
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
         borderRadius: 3,
         padding: 5,
         width: "70%",
-        backgroundColor: colors.green2,
+        backgroundColor: colors.mainColor2,
         fontSize: 15,
         fontFamily: 'RobotoLightItalic',
     },

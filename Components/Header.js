@@ -11,10 +11,10 @@ const Header = ({ title = "Producto", setSelectedCategory }) => {
             <View style={styles.titleContainer}>
                 <Text style={styles.text}>{title}</Text>
             </View>
-
+{/* 
             <Pressable style={styles.backButton} onPress={() => setSelectedCategory("") }> 
                 <AntDesign name='back' color='black' size={25} />
-            </Pressable>
+            </Pressable> */}
         </View>
     )
 }
@@ -23,7 +23,7 @@ export default Header
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: colors.green1,
+        backgroundColor: colors.mainColor1,
         width: "100%",
         paddingTop: 50,
         paddingBottom: 20,
