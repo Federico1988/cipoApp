@@ -1,41 +1,81 @@
 
 
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
-import Home from "../Screens/Home"
-import ItemListCategory from "../Screens/ItemListCategories"
-import ItemDetail from "../Screens/ItemDetail"
-import Header from '../Components/Header';
-import { colors } from '../Global/colors';
-import { fonts } from '../Global/fonts';
+import { StyleSheet } from 'react-native'
 
-const Stack = createNativeStackNavigator();
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import ShopStack from './ShopStack';
+import CartStack from './CartStack';
+import { colors } from '../Global/colors';
+import { Entypo } from "@expo/vector-icons";
+
+const Tab = createBottomTabNavigator();
 
 const Navigator = () => {
     return (
 
         <NavigationContainer>
-            <Stack.Navigator
-                initialRouteName='Home'
+            <Tab.Navigator
                 screenOptions={{
-                    headerStyle: {
-                        backgroundColor: colors.mainColor1,
-                        height: 80, // Adjust the header height as needed
-                    },
-                    headerTitleStyle: {
-                        fontSize: 32,
-                        fontFamily: 'RobotoBlack',
-                        color: 'black',
-                    },
-                    headerTintColor: 'black', // Back button and title color
+                    headerShown: false,
+                    tabBarShowLabel: false,
+                    tabBarStyle: styles.tabBar,
                 }}
             >
-                <Stack.Screen name="Home" component={Home} />
-                <Stack.Screen name="Category" component={ItemListCategory} />
-                <Stack.Screen name="Product" component={ItemDetail} />
-            </Stack.Navigator>
+                <Tab.Screen
+                    name="ShopStack"
+                    component={ShopStack}
+                    options={{
+                        tabBarIcon: ({ focused }) => {
+                            return (
+                                <Entypo name='shop'
+                                    size={40}
+                                    color={
+                                        focused ?
+                                            'black' :
+                                            colors.mainColor2} />
+                            )
+                        }
+                    }}
+                />
+
+                <Tab.Screen
+                    name="CartStack"
+                    component={CartStack}
+                    options={{
+                        tabBarIcon: ({ focused }) => {
+                            return (
+                                <Entypo name='shopping-cart'
+                                    size={40}
+                                    color={
+                                        focused ?
+                                            'black' :
+                                            colors.mainColor2} />
+                            )
+                        }
+                    }}
+                    />
+            </Tab.Navigator>
         </NavigationContainer>
     )
 }
 
 export default Navigator
+
+
+const styles = StyleSheet.create({
+    tabBar: {
+        backgroundColor: colors.secondaryColor1,
+        shadowColor: 'black',
+        elevation: 4,
+        position: 'absolute',
+        bottom: 30,
+        left: 20,
+        right: 20,
+        borderRadius: 10,
+        height: 80
+
+
+
+    }
+})
