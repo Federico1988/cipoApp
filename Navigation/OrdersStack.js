@@ -2,13 +2,14 @@ import { colors } from '../Global/colors';
 import { fonts } from '../Global/fonts';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Cart from '../Screens/Cart';
+import Orders from '../Screens/Orders';
 const Stack = createNativeStackNavigator();
 
-const CartStack = () => {
-    
+const OrdersStack = () => {
+
     return (
         <Stack.Navigator
-            initialRouteName='Cart'
+            initialRouteName='Orders'
             screenOptions={{
                 headerStyle: {
                     backgroundColor: colors.mainColor1,
@@ -22,10 +23,10 @@ const CartStack = () => {
                 headerTintColor: 'black', // Back button and title color
             }}
         >
-                        <Stack.Screen name="Cart" component={Cart} />
+            <Stack.Screen name="Orders" component={Orders} />
 
         </Stack.Navigator>
     )
 }
 
-export default CartStack
+export default OrdersStack
