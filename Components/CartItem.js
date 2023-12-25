@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         backgroundColor: colors.mainColor1,
         margin: 10,
         padding: 10,
-        height: 100,
+        height: 140,
         flexDirection: 'row',
         borderWidth: 2,
         borderRadius: 15,
@@ -31,7 +31,8 @@ const styles = StyleSheet.create({
         alignContent: 'center'
     },
     textContainer: {
-
+        justifyContent: 'space-between',
+        padding:5,
     },
     title: {
 

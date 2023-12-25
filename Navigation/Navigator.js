@@ -33,7 +33,7 @@ const Navigator = () => {
                                     color={
                                         focused ?
                                             'black' :
-                                            colors.mainColor2} />
+                                            colors.secondaryColor1} />
                             )
                         }
                     }}
@@ -50,7 +50,7 @@ const Navigator = () => {
                                     color={
                                         focused ?
                                             'black' :
-                                            colors.mainColor2} />
+                                            colors.secondaryColor1} />
                             )
                         }
                     }}
@@ -65,7 +65,7 @@ export default Navigator
 
 const styles = StyleSheet.create({
     tabBar: {
-        backgroundColor: colors.secondaryColor1,
+        backgroundColor: colors.mainColor2,
         shadowColor: 'black',
         elevation: 4,
         position: 'absolute',
