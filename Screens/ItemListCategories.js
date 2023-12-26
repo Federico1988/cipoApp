@@ -11,9 +11,7 @@ const ItemListCategories = ({ navigation, route }) => {
     const { category } = route.params;
     const [keyword, setKeyword] = useState("");
     const [filteredProducts, setfilteredProducts] = useState(filteredByCategoryProducts);
-    const dispatch = useDispatch()
-
-
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (category) {
