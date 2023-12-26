@@ -6,6 +6,8 @@ import { fonts } from './Global/fonts';
 import { colors } from './Global/colors';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Navigator from './Navigation/Navigator';
+import { store } from './app/store'
+import { Provider } from 'react-redux'
 
 
 export default function App() {
@@ -18,8 +20,10 @@ export default function App() {
         backgroundColor={colors.mainColor1}
         barStyle="default"
       />
+      <Provider store={store}>
+        <Navigator />
+      </Provider>
 
-      <Navigator />
       {/*<SafeAreaView style={styles.container}>
 
          <Header setSelectedCategory={setSelectedCategory} title={headerTitle} />

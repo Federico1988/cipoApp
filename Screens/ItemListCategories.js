@@ -1,28 +1,30 @@
 import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
-import Header from '../Components/Header'
 import Search from '../Components/Search'
-import allProducts from '../Data/products.json'
 import ProductItem from '../Components/ProductItem'
 import { useEffect, useState } from 'react'
-import { AntDesign, Entypo } from "@expo/vector-icons"
 import { colors } from '../Global/colors';
+import { useSelector, useDispatch } from 'react-redux'
+
 
 const ItemListCategories = ({ navigation, route }) => {
+    const filteredByCategoryProducts = useSelector(state => state.shop.value.filteredByCategoryProducts)
     const { category } = route.params;
     const [keyword, setKeyword] = useState("");
-    const [filteredProducts, setfilteredProducts] = useState([]);
+    const [filteredProducts, setfilteredProducts] = useState(filteredByCategoryProducts);
+    const dispatch = useDispatch()
+
 
 
     useEffect(() => {
         if (category) {
-            const prodCategory = allProducts.filter(prod => prod.category === category);
+            const prodCategory = filteredByCategoryProducts.filter(prod => prod.category === category);
             setfilteredProducts(prodCategory.filter(product => product.title.toLowerCase().includes(keyword.toLowerCase())));
         }
         else {
-            setfilteredProducts(allProducts.filter(product => product.title.toLowerCase().includes(keyword.toLowerCase())));
+            setfilteredProducts(filteredByCategoryProducts.filter(product => product.title.toLowerCase().includes(keyword.toLowerCase())));
 
         }
-    }, [keyword]);
+    }, [keyword, filteredByCategoryProducts]);
 
     return (
         <>
