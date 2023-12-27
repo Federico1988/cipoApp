@@ -1,16 +1,12 @@
 import { Pressable, StyleSheet, Text, View, Image } from 'react-native'
-import allProducts from "../Data/products.json"
 import { useEffect, useState } from 'react'
-import { fonts } from '../Global/fonts';
-import { colors } from '../Global/colors';
+import { fonts } from '../Global/fonts'
+import { colors } from '../Global/colors'
+import { useSelector } from 'react-redux'
+
 
 const ItemDetail = ({ route }) => {
-    const { id } = route.params;
-    const [prod, setProd] = useState({});
-
-    useEffect(() => {
-        setProd(allProducts.find(prod => prod.id === id));
-    }, [id])
+    const prod = useSelector((state) => state.shop.value.selectedProduct);
     return (
         <View style={styles.container}>
             <Text style={styles.prodName}>{prod.title}</Text>

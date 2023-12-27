@@ -18,10 +18,10 @@ export const shopSlice = createSlice({
     initialState,
     reducers: {
         setFilteredByCategoryProducts: (state, actions) => {
-            state.value.filteredByCategoryProducts = state.value.products.filter(product => product.category == actions.payload)
+            state.value.filteredByCategoryProducts = state.value.products.filter(product => product.category == actions.payload);
         },
         setSelectedProducts: (state, actions) => {
-            state.value.selectedProduct = state.value.products.find(product => product.id === actions.payload)
+            state.value.selectedProduct = state.value.products.find(product => product.id === actions.payload);
         }
 
     }
