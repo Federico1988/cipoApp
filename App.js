@@ -2,11 +2,11 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { useState } from 'react'
 import { useFonts } from 'expo-font';
-import { fonts } from './Global/fonts';
-import { colors } from './Global/colors';
+import { fonts } from './src/Global/fonts';
+import { colors } from './src/Global/colors';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Navigator from './Navigation/Navigator';
-import { store } from './app/store'
+import Navigator from './src//Navigation/Navigator';
+import { store } from './src/app/store'
 import { Provider } from 'react-redux'
 
 
