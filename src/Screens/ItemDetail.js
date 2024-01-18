@@ -2,10 +2,13 @@ import { Pressable, StyleSheet, Text, View, Image } from 'react-native'
 import { useEffect, useState } from 'react'
 import { fonts } from '../Global/fonts'
 import { colors } from '../Global/colors'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { addItem } from '../features/cart/cartSlice'
 
 
 const ItemDetail = ({ route }) => {
+    /*Todo: pasar a use selector lo que cliquea en itemListCategories*/
+    const dispatch = useDispatch();
     const prod = useSelector((state) => state.shop.value.selectedProduct);
     return (
         <View style={styles.container}>
@@ -16,7 +19,7 @@ const ItemDetail = ({ route }) => {
                 resizeMode="cover"
             />
             <Text style={styles.description}>{prod.description}</Text>
-            <Pressable style={styles.buyButton}>
+            <Pressable style={styles.buyButton} onPress={()=>dispatch(addItem(prod))}>
                 <Text style={styles.buyText}>Comprar!</Text>
             </Pressable>
         </View >

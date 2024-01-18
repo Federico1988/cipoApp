@@ -10,7 +10,6 @@ import { useGetProductsQuery } from '../sevices/shopServices';
 const ItemListCategories = ({ navigation, route }) => {
 
     const {category} = route.params
-    console.log(category)
     const { data, isLoading, error } = useGetProductsQuery(category);
     const [keyword, setKeyword] = useState("");
     const [products, setProducts] = useState(data);
@@ -20,8 +19,6 @@ const ItemListCategories = ({ navigation, route }) => {
     useEffect(() => {
         if (!isLoading) {
             const arrayData = Object.values(data);
-            console.log(data)
-            console.log(arrayData)
             const filteredProducts = arrayData.filter(product => product.title.toLowerCase().includes(keyword.toLowerCase()));
             setProducts(filteredProducts);
         }
