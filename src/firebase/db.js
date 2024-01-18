@@ -1,0 +1,1 @@
+export const base_url="https://cipoapp-76948-default-rtdb.firebaseio.com"

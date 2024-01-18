@@ -4,25 +4,28 @@ import ProductItem from '../Components/ProductItem'
 import { useEffect, useState } from 'react'
 import { colors } from '../Global/colors';
 import { useSelector, useDispatch } from 'react-redux'
+import { useGetProductsQuery } from '../sevices/shopServices';
 
 
 const ItemListCategories = ({ navigation, route }) => {
-    const filteredByCategoryProducts = useSelector(state => state.shop.value.filteredByCategoryProducts)
-    const { category } = route.params;
+
+    const {category} = route.params
+    console.log(category)
+    const { data, isLoading, error } = useGetProductsQuery(category);
     const [keyword, setKeyword] = useState("");
-    const [filteredProducts, setfilteredProducts] = useState(filteredByCategoryProducts);
-    const dispatch = useDispatch();
+    const [products, setProducts] = useState(data);
+
+    if (error) console.log(error);
 
     useEffect(() => {
-        if (category) {
-            const prodCategory = filteredByCategoryProducts.filter(prod => prod.category === category);
-            setfilteredProducts(prodCategory.filter(product => product.title.toLowerCase().includes(keyword.toLowerCase())));
+        if (!isLoading) {
+            const arrayData = Object.values(data);
+            console.log(data)
+            console.log(arrayData)
+            const filteredProducts = arrayData.filter(product => product.title.toLowerCase().includes(keyword.toLowerCase()));
+            setProducts(filteredProducts);
         }
-        else {
-            setfilteredProducts(filteredByCategoryProducts.filter(product => product.title.toLowerCase().includes(keyword.toLowerCase())));
-
-        }
-    }, [keyword, filteredByCategoryProducts]);
+    }, [keyword, data]);
 
     return (
         <>
@@ -30,7 +33,7 @@ const ItemListCategories = ({ navigation, route }) => {
 
             <FlatList
                 style={styles.container}
-                data={filteredProducts}
+                data={products}
                 keyExtractor={item => item.id}
                 renderItem={({ item }) => <ProductItem
                     navigation={navigation}
