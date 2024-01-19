@@ -5,26 +5,12 @@ import { useSelector } from 'react-redux'
 import CartItem from '../Components/CartItem'
 import { colors } from '../Global/colors'
 import { usePostOrdersMutation } from '../sevices/shopServices'
-import { clearCart } from '../features/cart/cartSlice'
 
 const Cart = () => {
 
     const cart = useSelector(state => state.cart.value);
     const [triggerPostOrder] = usePostOrdersMutation();
-    const onSuccessCallback = (data, variables, context) => {
-        dispatch(clearCart());
-        //set modal
-      };
-      
-  const handleOrderSubmit = async () => {
-    try {
-      await triggerPostOrder(cart, {
-        onSuccess: onSuccessCallback,
-      });
-    } catch (error) {
-        console.log(error);
-    }
-  };
+    
 
     return (
         <View style={styles.container}>
@@ -35,7 +21,7 @@ const Cart = () => {
             />
             <View style={styles.totalContainer}>
                 <Text style={styles.text}>Total: ${cart.total}</Text>
-                <Pressable onPress={handleOrderSubmit}>
+                <Pressable onPress={()=>triggerPostOrder(cart)}>
                     <Text style={styles.text}>Confirmar</Text>
                 </Pressable>
             </View>
