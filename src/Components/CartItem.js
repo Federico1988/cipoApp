@@ -9,7 +9,7 @@ const CartItem = ({ item }) => {
             <View style={styles.textContainer}>
                 <Text style={styles.title}>{item.title}</Text>
                 <Text style={styles.brand}>{item.brand}</Text>
-                <Text style={styles.price}>${item.price}</Text>
+                <Text style={styles.price}>Cantidad: {item.quantity} - ${item.price}</Text>
             </View>
             <Entypo name='trash' size={30} color='black' />
         </View>
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     },
     textContainer: {
         justifyContent: 'space-between',
-        padding:5,
+        padding: 5,
     },
     title: {
 

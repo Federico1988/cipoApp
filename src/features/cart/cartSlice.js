@@ -14,13 +14,20 @@ export const cartSlice = createSlice({
     initialState,
     reducers: {
         addItem: (state, actions) => {
-            state.value.items.push({...actions.payload,quantity:1});
-            console.log(state.value.items)
+            const findProduct = state.value.items.find(item => item.id === actions.payload.id);
+            if (findProduct) findProduct.quantity += 1;
+            else state.value.items.push({ ...actions.payload, quantity: 1 });
+            state.value.total = state.value.items.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+            state.value.updateAt = new Date().toLocaleString();
         },
-        deleteItem: () => { }
+        deleteItem: () => { },
+        clearCart: (state) => {
+            state.items = [];
+          }
+
     },
 })
 
-export const { addItem, deleteItem } = cartSlice.actions
+export const { addItem, deleteItem, clearCart } = cartSlice.actions
 
 export default cartSlice.reducer
