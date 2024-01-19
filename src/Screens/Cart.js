@@ -1,16 +1,18 @@
 import { StyleSheet, FlatList, Pressable, View, Text } from 'react-native'
 import allCart from "../Data/cart.json"
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import CartItem from '../Components/CartItem'
 import { colors } from '../Global/colors'
 import { usePostOrdersMutation } from '../sevices/shopServices'
+import { clearCart } from '../features/cart/cartSlice'
 
 const Cart = () => {
 
+    const dispatch = useDispatch();
     const cart = useSelector(state => state.cart.value);
     const [triggerPostOrder] = usePostOrdersMutation();
-    
+
 
     return (
         <View style={styles.container}>
@@ -21,7 +23,11 @@ const Cart = () => {
             />
             <View style={styles.totalContainer}>
                 <Text style={styles.text}>Total: ${cart.total}</Text>
-                <Pressable onPress={()=>triggerPostOrder(cart)}>
+                <Pressable onPress={() => {
+                    triggerPostOrder(cart); 
+                    dispatch(clearCart());
+                    /*Show modal*/
+                }}>
                     <Text style={styles.text}>Confirmar</Text>
                 </Pressable>
             </View>
