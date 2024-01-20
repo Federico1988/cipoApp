@@ -1,16 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Pressable, StyleSheet, View, Text } from 'react-native';
 import InputForm from '../Components/InputForm';
 import SubmitButton from '../Components/SubmitButton';
+import { useLoginMutation } from '../app/sevices/authServices';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../features/auth/authSlice';
 
 const Login = ({ navigation }) => {
+    const dispatch = useDispatch();
+    const [triggerLogin, { data, isError, isSuccess, error }] = useLoginMutation();
 
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
-    const onSubmit = () => {
 
+    useEffect(() => {
+        if (isSuccess) dispatch(setUser(data));
+        if (isError) console.log(error);
+    }, [data, isError, isSuccess])
+
+    const onSubmit = () => {
+        triggerLogin({ email, password });
     }
+
     return (
         <View style={styles.main}>
             <View style={styles.container}>
@@ -20,14 +32,16 @@ const Login = ({ navigation }) => {
                     value={email}
                     onChangeText={(t) => setEmail(t)}
                     hide={false}
+                    errorMsg=""
                 />
                 <InputForm
                     label="Password"
                     value={password}
                     onChangeText={(t) => setPassword(t)}
                     hide={true}
+                    errorMsg=""
                 />
-                <SubmitButton onPress={() => console.log("send")} title="Login to account" />
+                <SubmitButton onPress={onSubmit} title="Login to account" />
                 <Text style={styles.sub}> Not signed up?</Text>
                 <Pressable onPress={() => navigation.navigate("Signup")}>
                     <Text style={styles.sublink}> Sign me up! </Text >

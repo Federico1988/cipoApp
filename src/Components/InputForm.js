@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 
-const InputForm = ({ label, value, onChangeText, hide }) => {
+const InputForm = ({ label, value, onChangeText, hide, errorMsg }) => {
 
   return (
     <View style={styles.container}>
@@ -12,6 +12,7 @@ const InputForm = ({ label, value, onChangeText, hide }) => {
         style={styles.input}
         secureTextEntry={hide}
       />
+      {errorMsg ? <View><Text style={styles.error}>{errorMsg}</Text></View> : null}
     </View>
   );
 };
@@ -37,4 +38,7 @@ const styles = StyleSheet.create({
     paddingLeft: 30,
     paddingRight: 30,
   },
+  error: {
+    color: 'red',
+  }
 });

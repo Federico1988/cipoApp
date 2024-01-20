@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import CartItem from '../Components/CartItem'
 import { colors } from '../Global/colors'
-import { usePostOrdersMutation } from '../sevices/shopServices'
+import { usePostOrdersMutation } from '../app/sevices/shopServices'
 import { clearCart } from '../features/cart/cartSlice'
 
 const Cart = () => {

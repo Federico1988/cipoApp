@@ -4,7 +4,7 @@ import ProductItem from '../Components/ProductItem'
 import { useEffect, useState } from 'react'
 import { colors } from '../Global/colors';
 import { useSelector, useDispatch } from 'react-redux'
-import { useGetProductsQuery } from '../sevices/shopServices';
+import { useGetProductsQuery } from '../app/sevices/shopServices';
 
 
 const ItemListCategories = ({ navigation, route }) => {
