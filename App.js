@@ -8,6 +8,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Navigator from './src//Navigation/Navigator';
 import { store } from './src/app/store'
 import { Provider } from 'react-redux'
+import MainNavigator from './src/Navigation/MainNavigator';
 
 
 export default function App() {
@@ -21,7 +22,7 @@ export default function App() {
         barStyle="default"
       />
       <Provider store={store}>
-        <Navigator />
+        <MainNavigator />
       </Provider>
 
       {/*<SafeAreaView style={styles.container}>

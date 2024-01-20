@@ -12,14 +12,14 @@ const CartStack = () => {
             screenOptions={{
                 headerStyle: {
                     backgroundColor: colors.mainColor1,
-                    height: 80, // Adjust the header height as needed
+                    height: 80, 
                 },
                 headerTitleStyle: {
                     fontSize: 32,
                     fontFamily: 'RobotoBlack',
                     color: 'black',
                 },
-                headerTintColor: 'black', // Back button and title color
+                headerTintColor: 'black', 
             }}
         >
                         <Stack.Screen name="Cart" component={Cart} />

@@ -1,18 +1,15 @@
-
-import Home from "../Screens/Home"
-import ItemListCategory from "../Screens/ItemListCategories"
-import ItemDetail from "../Screens/ItemDetail"
-import Header from '../Components/Header';
 import { colors } from '../Global/colors';
 import { fonts } from '../Global/fonts';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Signup from '../Screens/Signup';
+import Login from '../Screens/Login';
 const Stack = createNativeStackNavigator();
 
-const ShopStack = () => {
+const AuthStack = () => {
     
     return (
         <Stack.Navigator
-            initialRouteName='Home'
+            initialRouteName='Signup'
             screenOptions={{
                 headerStyle: {
                     backgroundColor: colors.mainColor1,
@@ -26,11 +23,11 @@ const ShopStack = () => {
                 headerTintColor: 'black', 
             }}
         >
-            <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name="Category" component={ItemListCategory} />
-            <Stack.Screen name="Product" component={ItemDetail} />
+                        <Stack.Screen name="Signup" component={Signup} />
+                        <Stack.Screen name="Login" component={Login} />
+
         </Stack.Navigator>
     )
 }
 
-export default ShopStack
+export default AuthStack

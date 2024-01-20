@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
-import { Pressable, StyleSheet, View, Text } from 'react-native';
+import React, { useState } from 'react'
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import InputForm from '../Components/InputForm';
 import SubmitButton from '../Components/SubmitButton';
 
-const Login = ({ navigation }) => {
+const Signup = ({ navigation }) => {
 
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const [confPassword, setConfPassword] = useState();
 
     const onSubmit = () => {
-
+        console.log("submit")
     }
+
     return (
         <View style={styles.main}>
             <View style={styles.container}>
-                <Text style={styles.title}>Login!</Text>
+                <Text style={styles.title}>Sign Up</Text>
                 <InputForm
                     label="email"
                     value={email}
@@ -27,17 +29,26 @@ const Login = ({ navigation }) => {
                     onChangeText={(t) => setPassword(t)}
                     hide={true}
                 />
-                <SubmitButton onPress={() => console.log("send")} title="Login to account" />
-                <Text style={styles.sub}> Not signed up?</Text>
-                <Pressable onPress={() => navigation.navigate("Signup")}>
-                    <Text style={styles.sublink}> Sign me up! </Text >
+                <InputForm
+                    label="Confirm Password"
+                    value={confPassword}
+                    onChangeText={(t) => setConfPassword(t)}
+                    hide={true}
+                />
+                <SubmitButton title="Send" onPress={onSubmit} />
+                <Text style={styles.sub}>Alreadt signedup?</Text>
+                <Pressable onPress={() => navigation.navigate("Login")}>
+                    <Text style={styles.sublink} >then Login!</Text>
                 </Pressable>
             </View>
         </View>
+
     )
 }
 
-export default Login
+export default Signup
+
+
 
 const styles = StyleSheet.create({
     container: {
@@ -46,7 +57,7 @@ const styles = StyleSheet.create({
     },
     main: {
         width: '100%',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     title: {
         fontSize: 24,
@@ -57,9 +68,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     sublink: {
-        marginTop: 10,
         color: 'blue',
         textDecorationLine: 'underline',
     },
-
-})
+});
