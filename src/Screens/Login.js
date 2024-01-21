@@ -12,14 +12,18 @@ const Login = ({ navigation }) => {
 
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
-
+    const [errorMail, setErrorMail] = useState("");
 
     useEffect(() => {
         if (isSuccess) dispatch(setUser(data));
-        if (isError) console.log(error);
+        if (isError) {
+            console.log(error);
+            setErrorMail("Wrong email or password!")
+        }
     }, [data, isError, isSuccess])
 
     const onSubmit = () => {
+        setErrorMail("");
         triggerLogin({ email, password });
     }
 
@@ -32,7 +36,7 @@ const Login = ({ navigation }) => {
                     value={email}
                     onChangeText={(t) => setEmail(t)}
                     hide={false}
-                    errorMsg=""
+                    errorMsg={errorMail}
                 />
                 <InputForm
                     label="Password"
@@ -75,5 +79,4 @@ const styles = StyleSheet.create({
         color: 'blue',
         textDecorationLine: 'underline',
     },
-
 })

@@ -19,17 +19,37 @@ const Signup = ({ navigation }) => {
     const [errorConfPassword, setErrorConfPassword] = useState("");
 
     useEffect(() => {
-        if (isSuccess) dispatch(setUser(data));
-        if (isError) console.log(error);
-    }, [data, isError, isSuccess]);
+        if (isSuccess) {
+            dispatch(setUser(data));
+            console.log("User Set");
+        }
+        if (isError) {
+            console.log(error);
+            console.log("ERROR");
+            setErrorMail("Signup error, try another email")
+            /*if (error?.response?.data?.error) {
+                const errorMessage = error.response.data.error.message;
+
+                if (errorMessage === "EMAIL_EXISTS") {
+                    console.log("Email already exists. Please use a different email.");
+                } else {
+                    console.log(errorMessage);
+                }
+            }*/
+        }
+    }, [data, isError, isSuccess, error]);
+
 
     const onSubmit = () => {
         try {
+            setErrorMail("");
+            setErrorConfPassword("");
+            setErrorConfPassword("");
             signupSchema.validateSync({ email, password, confPassword })
             triggerSignUp({ email, password });
         }
         catch (error) {
-            console.log(error.path)
+            console.log("ERROR1");
             switch (error.path) {
                 case 'email':
                     setErrorMail(error.message);
@@ -37,7 +57,6 @@ const Signup = ({ navigation }) => {
                 case 'password':
                     setErrorPassword(error.message);
                     break;
-
                 case 'confPassword':
                     setErrorConfPassword(error.message);
                     break;
