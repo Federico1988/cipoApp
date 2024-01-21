@@ -1,0 +1,1 @@
+export const googleApi = {mapStatic:"AIzaSyA9ENa6w3EKn9Uuf9wHEaKFdFPOmvDpiK0"}

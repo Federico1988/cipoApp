@@ -1,6 +1,7 @@
 import { colors } from '../Global/colors';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MyProfile from '../Screens/MyProfile'
+import LocationSelector from '../Screens/LocationSelector';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,7 +23,8 @@ const ProfileStack = () => {
                 headerTintColor: 'black',
             }}
         >
-            <Stack.Screen name="Perfil" component={MyProfile} />
+            <Stack.Screen name="Profile" component={MyProfile} />
+            <Stack.Screen name="Address" component={LocationSelector} />
 
         </Stack.Navigator>
     )

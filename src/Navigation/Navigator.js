@@ -64,13 +64,10 @@ const styles = StyleSheet.create({
         shadowColor: 'black',
         elevation: 4,
         position: 'absolute',
-        bottom: 30,
+        bottom: 20,
         left: 20,
         right: 20,
         borderRadius: 10,
-        height: 80
-
-
-
+        height: 120
     }
 })

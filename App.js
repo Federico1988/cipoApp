@@ -9,6 +9,7 @@ import Navigator from './src//Navigation/Navigator';
 import { store } from './src/app/store'
 import { Provider } from 'react-redux'
 import MainNavigator from './src/Navigation/MainNavigator';
+import LocationSelector from './src/Screens/LocationSelector';
 
 
 export default function App() {

@@ -21,9 +21,25 @@ export const shopApi = createApi({
                 method: "POST",
                 body: order
             })
+        }),
+        postUserLocation: builder.mutation({
+            query: ({ localId, locationFormatted }) => ({
+                url: `userLocation/${localId}.json`,
+                method: "POST",
+                body: locationFormatted
+            })
+        }),
+        getUserLocation: builder.query({
+            query: (localId) => `userLocation/${localId}.json`,
         })
     }),
 })
 
 
-export const { useGetProductQuery, useGetProductsQuery, useGetCategoriesQuery, usePostOrdersMutation } = shopApi
+export const { useGetProductQuery,
+    useGetProductsQuery,
+    useGetCategoriesQuery,
+    usePostOrdersMutation,
+    usePostUserLocationMutation,
+    useGetUserLocationQuery
+} = shopApi
