@@ -25,7 +25,7 @@ const LocationSelector = ({ navigation }) => {
             let { status } = await Location.requestForegroundPermissionsAsync();
             if (status !== 'granted') {
                 setErrorMsg('Permimssion denied');
-                console.log('Permission denied')
+                setLoading(false);
                 return;
             }
             let deviceLocation = await Location.getCurrentPositionAsync({})
@@ -80,7 +80,7 @@ const LocationSelector = ({ navigation }) => {
                 <ActivityIndicator size="large" color="#3498db" style={styles.loadingIndicator} />
             ) : (
                 <>
-                    <Text style={styles.text}>{address}</Text>
+                    <Text style={styles.text}>{errorMsg?errorMsg:address}</Text>
                     <MapPreview latitude={location.latitude} longitude={location.longitude} />
                     <Pressable style={styles.button} onPress={onConfirmAddress}>
                         <Text style={styles.buttonText}>Confirm address</Text>
