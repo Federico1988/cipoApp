@@ -2,17 +2,23 @@ import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useGetUserLocationQuery } from '../app/sevices/shopServices';
 import { useSelector } from 'react-redux';
+import { clearUser } from '../features/auth/authSlice';
+import { useDispatch } from 'react-redux';
 
-const MyProfile = ({navigation}) => {
-    
+const MyProfile = ({ navigation }) => {
+
+    const dispatch = useDispatch();
     const localId = useSelector(state => state.auth.value.localId);
-    const {data}= useGetUserLocationQuery(localId);
+    const { data } = useGetUserLocationQuery(localId);
 
     return (
         <View style={styles.container}>
-            <Text>{data?.location?.address}</Text>
+            <Text style={styles.text}>{data?.address}</Text>
             <Pressable style={styles.button} onPress={() => navigation.navigate("Address")}>
-                <Text style={styles.buttonText}>Set address</Text>
+                <Text style={styles.buttonText}>{data?.address?"Change Address":"Set Address"}</Text>
+            </Pressable>
+            <Pressable style={styles.button} onPress={() =>  dispatch(clearUser())}>
+                <Text style={styles.buttonText}>Log Out!</Text>
             </Pressable>
         </View>
     )
@@ -40,5 +46,10 @@ const styles = StyleSheet.create({
     buttonText: {
         color: '#fff',
         fontSize: 16
+    },
+    text:{
+        width:"70%",
+        textAlign:'center',
+        fontSize:16
     }
 })

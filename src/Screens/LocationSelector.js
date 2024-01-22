@@ -41,8 +41,8 @@ const LocationSelector = ({ navigation }) => {
                 if (location.latitude) {
                     const latLng = `${encodeURIComponent(location.latitude)},${encodeURIComponent(location.longitude)}`;
                     const addressResponse = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latLng}&key=${googleApi.mapStatic}`);
-                    const address = await addressResponse.json()
-                    setAddress(address.results[0].formatted_address)
+                    const address = await addressResponse.json();
+                    setAddress(address.results[0].formatted_address);
                 }
             }
             catch (error) {
