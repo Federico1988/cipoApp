@@ -1,4 +1,4 @@
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
+import { ActivityIndicator, Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import * as Location from 'expo-location'
 import MapPreview from '../Components/MapPreview';
@@ -11,6 +11,7 @@ const LocationSelector = ({ navigation }) => {
     const [location, setLocation] = useState({ latitude: "", longitude: "" });
     const [address, setAddress] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
+    const [loading, setLoading] = useState(true);
     const [triggerPostUserLocation, { data, isSuccess, isError, error }] = usePostUserLocationMutation();
 
     useEffect(() => {
@@ -43,10 +44,12 @@ const LocationSelector = ({ navigation }) => {
                     const addressResponse = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latLng}&key=${googleApi.mapStatic}`);
                     const address = await addressResponse.json();
                     setAddress(address.results[0].formatted_address);
+                    setLoading(false);
                 }
             }
             catch (error) {
-                setErrorMsg(error.message)
+                setErrorMsg(error.message);
+                setLoading(false);
             }
         })()
 
@@ -73,14 +76,17 @@ const LocationSelector = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>{address}</Text>
-            <MapPreview
-                latitude={location.latitude}
-                longitude={location.longitude}
-            />
-            <Pressable style={styles.button} onPress={onConfirmAddress}>
-                <Text style={styles.buttonText}>Confirm address</Text>
-            </Pressable>
+            {loading ? (
+                <ActivityIndicator size="large" color="#3498db" style={styles.loadingIndicator} />
+            ) : (
+                <>
+                    <Text style={styles.text}>{address}</Text>
+                    <MapPreview latitude={location.latitude} longitude={location.longitude} />
+                    <Pressable style={styles.button} onPress={onConfirmAddress}>
+                        <Text style={styles.buttonText}>Confirm address</Text>
+                    </Pressable>
+                </>
+            )}
         </View>
     )
 }
@@ -113,5 +119,8 @@ const styles = StyleSheet.create({
     buttonText: {
         color: '#fff',
         fontSize: 16
-    }
+    },
+    loadingIndicator: {
+        marginTop: 20,
+      },
 })
