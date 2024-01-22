@@ -1,9 +1,11 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, Text, View, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useGetUserLocationQuery } from '../app/sevices/shopServices';
 import { useSelector } from 'react-redux';
 import { clearUser } from '../features/auth/authSlice';
 import { useDispatch } from 'react-redux';
+import LogoutIcon from '../../assets/logout-icon.png';
+
 
 const MyProfile = ({ navigation }) => {
 
@@ -15,10 +17,11 @@ const MyProfile = ({ navigation }) => {
         <View style={styles.container}>
             <Text style={styles.text}>{data?.address}</Text>
             <Pressable style={styles.button} onPress={() => navigation.navigate("Address")}>
-                <Text style={styles.buttonText}>{data?.address?"Change Address":"Set Address"}</Text>
+                <Text style={styles.buttonText}>{data?.address ? "Change Address" : "Set Address"}</Text>
             </Pressable>
-            <Pressable style={styles.button} onPress={() =>  dispatch(clearUser())}>
+            <Pressable style={styles.logoutButton} onPress={() => dispatch(clearUser())}>
                 <Text style={styles.buttonText}>Log Out!</Text>
+                <Image source={LogoutIcon} style={styles.logoutIcon} />
             </Pressable>
         </View>
     )
@@ -47,9 +50,27 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 16
     },
-    text:{
-        width:"70%",
-        textAlign:'center',
-        fontSize:16
-    }
+    text: {
+        width: "70%",
+        textAlign: 'center',
+        fontSize: 16
+    },
+    logoutButton: {
+        backgroundColor: '#e74c3c', 
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: '#c0392b', 
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'row', 
+        width: '60%',
+        gap:20
+      },
+      logoutIcon: {
+        width: 20,
+        height: 20,
+        tintColor: '#fff', 
+      },
 })
