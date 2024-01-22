@@ -69,8 +69,6 @@ const LocationSelector = ({ navigation }) => {
         } catch (error) {
             setErrorMsg(error.message);
         }
-
-
     }
 
 
@@ -80,9 +78,13 @@ const LocationSelector = ({ navigation }) => {
                 <ActivityIndicator size="large" color="#3498db" style={styles.loadingIndicator} />
             ) : (
                 <>
-                    <Text style={styles.text}>{errorMsg?errorMsg:address}</Text>
+                    <Text style={styles.text}>{errorMsg ? errorMsg : address}</Text>
                     <MapPreview latitude={location.latitude} longitude={location.longitude} />
-                    <Pressable style={styles.button} onPress={onConfirmAddress}>
+                    <Pressable
+                        style={[styles.button, errorMsg && styles.disabledButton]} // Apply additional styles for the disabled state
+                        onPress={onConfirmAddress}
+                        disabled={!!errorMsg} // Set disabled to true if errorMsg is truthy
+                    >
                         <Text style={styles.buttonText}>Confirm address</Text>
                     </Pressable>
                 </>
@@ -116,11 +118,17 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         width: "60%"
     },
+    disabledButton: {
+        backgroundColor: '#bdc3c7', 
+        borderColor: '#95a5a6', 
+        opacity: 0.6, 
+    },
+
     buttonText: {
         color: '#fff',
         fontSize: 16
     },
     loadingIndicator: {
         marginTop: 20,
-      },
+    },
 })
