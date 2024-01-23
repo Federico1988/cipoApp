@@ -4,12 +4,14 @@ import { Feather } from "@expo/vector-icons"
 import { colors } from '../Global/colors';
 
 const OrderItem = ({ order }) => {
-    const total = order.items.reduce((acc, product) => acc + (product.price * product.quantity), 0);
+
+    const total = order.items?.length > 0 ? order.items.reduce((acc, product) => acc + (product.price * product.quantity), 0) : 0;
+
 
     return (
         <View style={styles.container}>
             <View style={styles.textContainer}>
-                <Text style={styles.text}>{new Date(order.createdDate).toLocaleString()}</Text>
+                <Text style={styles.text}>{order.updateAt}</Text>
                 <Text style={styles.text}>Total ${total}</Text>
 
             </View>
