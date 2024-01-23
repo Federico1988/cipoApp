@@ -1,4 +1,4 @@
-import { StyleSheet, FlatList, Pressable, View, Text, Modal, Button } from 'react-native'
+import { StyleSheet, FlatList, Pressable, View, Text, Modal, Button, TouchableOpacity } from 'react-native'
 import allCart from "../Data/cart.json"
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
@@ -26,7 +26,7 @@ const Cart = () => {
 
     const handleModalClose = () => {
         setModalVisible(false);
-        dispatch(clearCart()); 
+        dispatch(clearCart());
     };
 
     return (
@@ -42,6 +42,9 @@ const Cart = () => {
                     <Text style={styles.text}>Confirmar</Text>
                 </Pressable>
             </View>
+
+
+
             <Modal
                 animationType="slide"
                 transparent={true}
@@ -49,8 +52,13 @@ const Cart = () => {
                 onRequestClose={handleModalClose}
             >
                 <View style={styles.modalContainer}>
-                    <Text>Order Successful!</Text>
-                    <Button title="OK" onPress={handleModalClose} />
+                    <Text style={styles.modalText}>Order Successful!</Text>
+                    <TouchableOpacity
+                        style={styles.okButton}
+                        onPress={handleModalClose}
+                    >
+                        <Text style={styles.okButtonText}>OK</Text>
+                    </TouchableOpacity>
                 </View>
             </Modal>
         </View>
@@ -80,8 +88,48 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     modalContainer: {
-        flex: 1,
-        justifyContent: 'center',
+        width: 300,
+        alignSelf: 'center',
+        marginTop: 'auto',
         alignItems: 'center',
+        marginBottom: 'auto',
+        backgroundColor: '#f8f8f8',
+        padding: 20,
+        borderRadius: 15,
+        shadowColor: '#333',
+        gap: 30,
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
+        elevation: 8,
+    },
+
+    modalText: {
+        fontSize: 18,
+        color: '#354F',
+        marginBottom: 20,
+        textAlign: 'center',
+        fontWeight: 'bold'
+
+    },
+
+    okButton: {
+        backgroundColor: '#3498db',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 8,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '50%',
+        alignSelf: 'center',
+        borderWidth: 2,
+    },
+
+    okButtonText: {
+        color: '#fff',
+        fontSize: 16,
     },
 })
