@@ -25,7 +25,7 @@ export const shopApi = createApi({
             invalidatesTags: ["orders"]
         }),
         getOrders: builder.query({
-            query: () => `orders.json`,
+            query: (localId) => `orders/${localId}.json`,
             providesTags: ["orders"]
         }),
         postUserLocation: builder.mutation({
