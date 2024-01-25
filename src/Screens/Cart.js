@@ -9,13 +9,14 @@ import { clearCart } from '../features/cart/cartSlice';
 const Cart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.value);
+  const localId = useSelector(state => state.auth.value.localId);
   const [triggerPostOrder] = usePostOrdersMutation();
   const [modalVisible, setModalVisible] = useState(false);
 
   const handleOrderConfirmation = async () => {
     try {
       console.log('running');
-      await triggerPostOrder(cart);
+      await triggerPostOrder({ order: cart, localId });
       setModalVisible(true);
     } catch (error) {
       console.error('Error posting order:', error);

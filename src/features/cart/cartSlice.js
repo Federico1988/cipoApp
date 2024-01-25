@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     value: {
-        user: "federico",
         items: [],
         total: null,
         updateAt: ""

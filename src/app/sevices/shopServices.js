@@ -5,7 +5,7 @@ import { base_url } from '../../firebase/db'
 export const shopApi = createApi({
     reducerPath: 'shopApi',
     baseQuery: fetchBaseQuery({ baseUrl: base_url }),
-    tagTypes: ["location"],
+    tagTypes: ["location","orders"],
     endpoints: (builder) => ({
         getProducts: builder.query({
             query: (category) => `products.json?orderBy="category"&equalTo="${category}"`,
@@ -17,14 +17,16 @@ export const shopApi = createApi({
             query: () => `categories.json`
         }),
         postOrders: builder.mutation({
-            query: (order) => ({
-                url: "orders.json",
+            query: ({order, localId}) => ({
+                url: `orders/${localId}.json`,
                 method: "POST",
                 body: order
-            })
+            }),
+            invalidatesTags: ["orders"]
         }),
         getOrders: builder.query({
-            query: () => `orders.json`
+            query: () => `orders.json`,
+            providesTags: ["orders"]
         }),
         postUserLocation: builder.mutation({
             query: ({ localId, locationFormatted }) => ({

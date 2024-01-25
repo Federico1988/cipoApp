@@ -18,7 +18,7 @@ const LocationSelector = ({ navigation }) => {
         //if (isSuccess) console.log(data);
         if (isError) console.log(error);
 
-    }, [data, isSuccess, isError, error])
+    }, [data, isSuccess, isError, error]);
 
     useEffect(() => {
         (async () => {
