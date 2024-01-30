@@ -10,6 +10,13 @@ import { store } from './src/app/store'
 import { Provider } from 'react-redux'
 import MainNavigator from './src/Navigation/MainNavigator';
 import LocationSelector from './src/Screens/LocationSelector';
+import { init, resetSessionTable } from './src/database';
+
+init().then(() => console.log('DB Inited'))
+  .catch(err => {
+    console.log("DB Init failed: ");
+    console.log(err.message);
+  });
 
 
 export default function App() {

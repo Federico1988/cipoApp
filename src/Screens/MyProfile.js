@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { clearUser } from '../features/auth/authSlice';
 import { useDispatch } from 'react-redux';
 import LogoutIcon from '../../assets/logout-icon.png';
+import { deleteAllSession } from '../database';
 
 
 const MyProfile = ({ navigation }) => {
@@ -12,6 +13,11 @@ const MyProfile = ({ navigation }) => {
     const dispatch = useDispatch();
     const localId = useSelector(state => state.auth.value.localId);
     const { data } = useGetUserLocationQuery(localId);
+    const onLogout = () =>{
+        deleteAllSession();
+        dispatch(clearUser());
+
+    }
 
     return (
         <View style={styles.container}>
@@ -19,7 +25,7 @@ const MyProfile = ({ navigation }) => {
             <Pressable style={styles.button} onPress={() => navigation.navigate("Address")}>
                 <Text style={styles.buttonText}>{data?.address ? "Change Address" : "Set Address"}</Text>
             </Pressable>
-            <Pressable style={styles.logoutButton} onPress={() => dispatch(clearUser())}>
+            <Pressable style={styles.logoutButton} onPress={onLogout}>
                 <Text style={styles.buttonText}>Log Out!</Text>
                 <Image source={LogoutIcon} style={styles.logoutIcon} />
             </Pressable>

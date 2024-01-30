@@ -6,6 +6,7 @@ import { useSignupMutation } from '../app/sevices/authServices';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../features/auth/authSlice';
 import { signupSchema } from '../validations/signupSchema';
+import { insertSession } from '../database';
 
 const Signup = ({ navigation }) => {
 
@@ -20,22 +21,16 @@ const Signup = ({ navigation }) => {
 
     useEffect(() => {
         if (isSuccess) {
-            dispatch(setUser(data));
-            console.log("User Set");
-        }
+            dispatch(setUser(data))
+            insertSession(data)
+                .then(result => console.log(result))
+                .catch(err => console.log(err))
+        };
         if (isError) {
             console.log(error);
             console.log("ERROR");
             setErrorMail("Signup error, try another email")
-            /*if (error?.response?.data?.error) {
-                const errorMessage = error.response.data.error.message;
 
-                if (errorMessage === "EMAIL_EXISTS") {
-                    console.log("Email already exists. Please use a different email.");
-                } else {
-                    console.log(errorMessage);
-                }
-            }*/
         }
     }, [data, isError, isSuccess, error]);
 
