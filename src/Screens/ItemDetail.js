@@ -14,7 +14,6 @@ const ItemDetail = ({ navigation }) => {
     setModalVisible(false);
     navigation.goBack();
   };
-console.log("Product detail thumbnail: ",  prod.thumbnail)
   return (
     <View style={styles.container}>
       <Text style={styles.prodName}>{prod.title}</Text>

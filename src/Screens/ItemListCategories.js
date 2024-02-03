@@ -49,6 +49,7 @@ export default ItemListCategories
 const styles = StyleSheet.create({
     container: {
         width: "100%",
+        marginBottom: 140,
         backgroundColor: colors.secondaryColor1
     }
 
