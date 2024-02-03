@@ -18,9 +18,11 @@ const ItemListCategories = ({ navigation, route }) => {
 
     useEffect(() => {
         if (!isLoading) {
+            console.log(data)
             const arrayData = Object.values(data);
             const filteredProducts = arrayData.filter(product => product.title.toLowerCase().includes(keyword.toLowerCase()));
             setProducts(filteredProducts);
+            
         }
     }, [keyword, data]);
 

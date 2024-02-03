@@ -12,7 +12,7 @@ const ProductItem = ({ item, navigation, route }) => {
 
     return (
         <Pressable style={styles.container} onPress={() => {
-            dispatch(setSelectedProducts(item.id));
+            dispatch(setSelectedProducts(item));
             navigation.navigate("Product", { id: item.id });
         }}>
             <Image

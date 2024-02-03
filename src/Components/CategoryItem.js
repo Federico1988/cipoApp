@@ -3,14 +3,14 @@ import React from 'react'
 import { colors } from '../Global/colors'
 import CardShadow from '../Wrappers/CardShadow'
 import { useDispatch } from 'react-redux'
-import { setFilteredByCategoryProducts } from "../features/shop/shopSlice"
+import { setFilterCategory } from "../features/shop/shopSlice"
 
 const CategoryItem = ({ category, navigation, route }) => {
     const dispatch = useDispatch()
 
     return (
         <Pressable onPress={() => {
-            dispatch(setFilteredByCategoryProducts(category));
+            dispatch(setFilterCategory(category));
             navigation.navigate("Category", { category });
         }}>
             <CardShadow style={styles.container}>
