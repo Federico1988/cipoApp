@@ -77,7 +77,9 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: 250,
+    aspectRatio: 1,
     marginVertical: 10,
+    borderRadius:10
   },
   prodName: {
     fontFamily: 'RobotoLight',
