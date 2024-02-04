@@ -3,6 +3,7 @@ import { StyleSheet, FlatList, Pressable, View, Text, Modal, TouchableOpacity } 
 import { useSelector, useDispatch } from 'react-redux';
 import CartItem from '../Components/CartItem';
 import { colors } from '../Global/colors';
+import { fonts } from '../Global/fonts';
 import { usePostOrdersMutation } from '../app/sevices/shopServices';
 import { clearCart } from '../features/cart/cartSlice';
 
@@ -48,7 +49,7 @@ const Cart = () => {
           ]}
           disabled={isConfirmButtonDisabled}
         >
-          <Text style={styles.text}>Confirmar</Text>
+          <Text style={styles.confirmText}>Confirmar</Text>
         </Pressable>
       </View>
 
@@ -74,10 +75,11 @@ export default Cart;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginBottom: 140,
+    paddingBottom: 140,
+    backgroundColor: colors.secondaryColor2
   },
   totalContainer: {
-    backgroundColor: colors.secondaryColor1,
+    backgroundColor: colors.mainColor2,
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 40,
@@ -88,7 +90,12 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   confirmButton: {
-    backgroundColor: colors.secondaryColor2,
+    backgroundColor: colors.mainColor1,
+  },
+  confirmText: {
+    fontFamily: 'RobotoBlack',
+    fontSize: 20,
+    color: colors.clearColor,
   },
   disabledButton: {
     opacity: 0.2,
