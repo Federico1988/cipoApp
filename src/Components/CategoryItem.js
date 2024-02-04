@@ -31,10 +31,12 @@ const styles = StyleSheet.create({
         padding: 10,
         justifyContent: "center",
         alignItems: "center",
+        borderRadius:10,
     },
     text: {
         fontFamily: 'RobotoLightItalic',
-        fontSize: 20
+        color: colors.clearColor,
+        fontSize: 25
     }
 
 })
