@@ -21,9 +21,9 @@ const ShopStack = () => {
                 headerTitleStyle: {
                     fontSize: 32,
                     fontFamily: 'RobotoBlack',
-                    color: 'black',
+                    color: colors.darkColor,
                 },
-                headerTintColor: 'black', 
+                headerTintColor: colors.darkColor, 
             }}
         >
             <Stack.Screen name="Home" component={Home} />

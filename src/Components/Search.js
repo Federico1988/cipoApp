@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
 
     },
     errorStyle: {
-        color: "red",
+        color: colors.errorColor,
         paddingHorizontal: 10
     }
 })

@@ -5,6 +5,7 @@ import MapPreview from '../Components/MapPreview';
 import { googleApi } from '../firebase/googleApi';
 import { usePostUserLocationMutation } from '../app/sevices/shopServices';
 import { useSelector } from 'react-redux';
+import { colors } from '../Global/colors';
 
 const LocationSelector = ({ navigation }) => {
     const localId = useSelector(state => state.auth.value.localId);
@@ -125,7 +126,7 @@ const styles = StyleSheet.create({
     },
 
     buttonText: {
-        color: '#fff',
+        color: colors.clearColor,
         fontSize: 16
     },
     loadingIndicator: {

@@ -18,9 +18,9 @@ const OrdersStack = () => {
                 headerTitleStyle: {
                     fontSize: 32,
                     fontFamily: 'RobotoBlack',
-                    color: 'black',
+                    color: colors.darkColor,
                 },
-                headerTintColor: 'black',
+                headerTintColor: colors.darkColor,
             }}
         >
             <Stack.Screen name="Orders" component={Orders} />

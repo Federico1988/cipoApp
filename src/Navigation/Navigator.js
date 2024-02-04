@@ -61,7 +61,7 @@ export default Navigator
 const styles = StyleSheet.create({
     tabBar: {
         backgroundColor: colors.mainColor2,
-        shadowColor: 'black',
+        shadowColor: colors.darkColor,
         elevation: 4,
         position: 'absolute',
         bottom: 20,

@@ -1,19 +1,33 @@
-import { Pressable, StyleSheet, Text, View, Image, Modal, TouchableOpacity } from 'react-native'
-import { useEffect, useState } from 'react'
-import { fonts } from '../Global/fonts'
+import { StyleSheet, Text, View, Image, Modal, TouchableOpacity } from 'react-native'
 import { colors } from '../Global/colors'
+import { fonts } from '../Global/fonts'
 import { useDispatch, useSelector } from 'react-redux'
 import { addItem } from '../features/cart/cartSlice'
+import Toast from 'react-native-toast-message'
+import { useState } from 'react'
 
 const ItemDetail = ({ navigation }) => {
   const dispatch = useDispatch();
   const prod = useSelector((state) => state.shop.value.selectedProduct);
-  const [modalVisible, setModalVisible] = useState(false);
+  const [disableButton, setDisableButton] = useState(false);
 
-  const handleModalClose = () => {
-    setModalVisible(false);
+  const handleToastClose = () => {
     navigation.goBack();
   };
+
+  const showToast = () => {
+    Toast.show({
+      type: 'success',
+      text1: 'Product Added!',
+      text2: 'Go to cart to finish purchase',
+      autoHide: true,
+      visibilityTime: 3000,
+      onHide: handleToastClose,
+      onPress: Toast.hide,
+    });
+
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.prodName}>{prod.title}</Text>
@@ -24,30 +38,29 @@ const ItemDetail = ({ navigation }) => {
       />
       <Text style={styles.description}>{prod.description}</Text>
       <TouchableOpacity
-        style={styles.buyButton}
+        style={[
+          styles.buyButton,
+          disableButton ? styles.disabledButton : null,
+        ]}
         onPress={() => {
           dispatch(addItem(prod));
-          setModalVisible(true);
+          setDisableButton(true);
+          showToast();
+          
         }}
+        disabled={disableButton}
       >
-        <Text style={styles.buyText}>Comprar!</Text>
+        <Text style={styles.buyText}>Add to cart!</Text>
       </TouchableOpacity>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={handleModalClose}
-      >
-        <View style={styles.modalContainer}>
-          <Text style={styles.modalText}>Product Added!!</Text>
-          <TouchableOpacity
-            style={styles.okButton}
-            onPress={handleModalClose}
-          >
-            <Text style={styles.okButtonText}>OK</Text>
-          </TouchableOpacity>
-        </View>
-      </Modal>
+      <Toast
+
+        topOffset='200'
+        backgroundColor={colors.mainColor1}
+        opacity={0.9}
+        borderRadius={10}
+        borderWidth={2}
+        borderColor={colors.clearColor}
+      />
     </View>
   );
 };
@@ -82,54 +95,15 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 5,
     padding: 20,
+    backgroundColor: colors.mainColor1,
+  },
+  disabledButton: {
+    backgroundColor: colors.disabledColor, 
+    opacity: 0.5,
   },
   buyText: {
     fontFamily: 'RobotoBlack',
     fontSize: 20,
-  },
-  modalContainer: {
-    width: 300,
-    alignSelf: 'center',
-    marginTop: 'auto',
-    alignItems: 'center',
-    marginBottom: 'auto',
-    backgroundColor: '#f8f8f8',
-    padding: 20,
-    borderRadius: 15,
-    shadowColor: '#333',
-    gap: 30,
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
-    elevation: 8,
-  },
-
-  modalText: {
-    fontSize: 18,
-    color: '#354F',
-    marginBottom: 20,
-    textAlign: 'center',
-    fontWeight:'bold'
-    
-  },
-
-  okButton: {
-    backgroundColor: '#3498db',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '50%',
-    alignSelf: 'center',
-    borderWidth: 2,
-  },
-
-  okButtonText: {
-    color: '#fff',
-    fontSize: 16,
+    color: colors.clearColor,
   },
 });

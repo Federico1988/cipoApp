@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { colors } from '../Global/colors';
 
 const InputForm = ({ label, value, onChangeText, hide, errorMsg }) => {
 
@@ -28,17 +29,17 @@ const styles = StyleSheet.create({
   titleInput: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#333',
+    color: colors.darkColor,
   },
   input: {
     height: 40,
     borderBottomWidth: 1,
     fontSize: 16,
-    color: '#333',
+    color: colors.darkColor,
     paddingLeft: 30,
     paddingRight: 30,
   },
   error: {
-    color: 'red',
+    color: colors.errorColor,
   }
 });

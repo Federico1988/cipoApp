@@ -1,15 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import { useState } from 'react'
 import { useFonts } from 'expo-font';
 import { fonts } from './src/Global/fonts';
 import { colors } from './src/Global/colors';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import Navigator from './src//Navigation/Navigator';
 import { store } from './src/app/store'
 import { Provider } from 'react-redux'
 import MainNavigator from './src/Navigation/MainNavigator';
-import LocationSelector from './src/Screens/LocationSelector';
 import { init, resetSessionTable } from './src/database';
 
 init().then(() => console.log('DB Inited'))
@@ -52,7 +48,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.clearColor,
     alignItems: 'center',
     justifyContent: 'start',
   }

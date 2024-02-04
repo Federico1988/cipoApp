@@ -74,7 +74,7 @@ export default Cart;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginBottom: 120,
+    marginBottom: 140,
   },
   totalContainer: {
     backgroundColor: colors.secondaryColor1,
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   confirmButton: {
-    backgroundColor: '#3498db',
+    backgroundColor: colors.secondaryColor2,
   },
   disabledButton: {
     opacity: 0.2,
@@ -100,10 +100,10 @@ const styles = StyleSheet.create({
     marginTop: 'auto',
     alignItems: 'center',
     marginBottom: 'auto',
-    backgroundColor: '#f8f8f8',
+    backgroundColor: colors.successBackgroundColor,
     padding: 20,
     borderRadius: 15,
-    shadowColor: '#333',
+    shadowColor: colors.darkColor,
     gap: 30,
     shadowOffset: {
       width: 0,
@@ -115,13 +115,13 @@ const styles = StyleSheet.create({
   },
   modalText: {
     fontSize: 18,
-    color: '#354F',
+    color: colors.successTextColor,
     marginBottom: 20,
     textAlign: 'center',
     fontWeight: 'bold',
   },
   okButton: {
-    backgroundColor: '#3498db',
+    backgroundColor: colors.secondaryColor1,
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 8,
@@ -132,7 +132,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
   },
   okButtonText: {
-    color: '#fff',
+    color: colors.successTextColor,
     fontSize: 16,
+    fontWeight: 'bold',
   },
 });
