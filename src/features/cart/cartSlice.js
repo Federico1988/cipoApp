@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     value: {
         items: [],
-        total: null,
+        total: 0,
         updateAt: ""
     }
 }
@@ -19,7 +19,16 @@ export const cartSlice = createSlice({
             state.value.total = state.value.items.reduce((acc, item) => acc + (item.price * item.quantity), 0);
             state.value.updateAt = new Date().toLocaleString();
         },
-        deleteItem: () => { },
+        deleteItem: (state, actions) => {
+            const index = state.value.items.findIndex(item => item.id === actions.payload.id);
+
+            if (index !== -1) {
+                state.value.items.splice(index, 1);
+            }
+            state.value.total = state.value.items.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+            state.value.updateAt = new Date().toLocaleString();
+
+        },
         clearCart: (state) => {
             state.value.items = [];
             state.value.total = 0;
