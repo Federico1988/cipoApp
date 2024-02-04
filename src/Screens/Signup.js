@@ -27,7 +27,6 @@ const Signup = ({ navigation }) => {
                 .catch(err => console.log(err))
         };
         if (isError) {
-            console.log(error);
             console.log("ERROR");
             setErrorMail("Signup error, try another email")
 
@@ -44,7 +43,6 @@ const Signup = ({ navigation }) => {
             triggerSignUp({ email, password });
         }
         catch (error) {
-            console.log("ERROR1");
             switch (error.path) {
                 case 'email':
                     setErrorMail(error.message);

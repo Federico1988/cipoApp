@@ -3,7 +3,6 @@ import Search from '../Components/Search'
 import ProductItem from '../Components/ProductItem'
 import { useEffect, useState } from 'react'
 import { colors } from '../Global/colors';
-import { useSelector, useDispatch } from 'react-redux'
 import { useGetProductsQuery } from '../app/sevices/shopServices';
 
 
@@ -18,7 +17,7 @@ const ItemListCategories = ({ navigation, route }) => {
 
     useEffect(() => {
         if (!isLoading) {
-            console.log(data)
+            //console.log(data)
             const arrayData = Object.values(data);
             const filteredProducts = arrayData.filter(product => product.title.toLowerCase().includes(keyword.toLowerCase()));
             setProducts(filteredProducts);

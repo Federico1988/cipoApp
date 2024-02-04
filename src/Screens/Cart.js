@@ -15,7 +15,7 @@ const Cart = () => {
 
   const handleOrderConfirmation = async () => {
     try {
-      console.log('running');
+      //console.log('running');
       await triggerPostOrder({ order: cart, localId });
       setModalVisible(true);
     } catch (error) {

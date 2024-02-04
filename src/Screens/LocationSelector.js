@@ -62,7 +62,7 @@ const LocationSelector = ({ navigation }) => {
                 ...location
             }
             const data = await triggerPostUserLocation({ localId, locationFormatted });
-            console.log(data);
+            //console.log(data);
 
             navigation.goBack();
 
