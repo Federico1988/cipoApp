@@ -20,9 +20,6 @@ const MyProfile = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.heading}>My Profile</Text>
-      </View>
 
       <View style={styles.fieldContainer}>
         <Text style={styles.label}>User:</Text>
@@ -53,7 +50,7 @@ export default MyProfile;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ecf0f1',
+    backgroundColor: colors.secondaryColor1
   },
   header: {
     backgroundColor: '#3498db',

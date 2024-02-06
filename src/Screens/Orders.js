@@ -4,6 +4,7 @@ import OrderItem from '../Components/OrderItem'
 import { useGetOrdersQuery } from '../app/sevices/shopServices';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { colors } from '../Global/colors';
 
 const Orders = () => {
 
@@ -45,6 +46,7 @@ export default Orders
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: colors.secondaryColor1
     },
     flatList: {
         flex: 1,
