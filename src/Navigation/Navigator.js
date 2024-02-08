@@ -60,14 +60,13 @@ export default Navigator
 
 const styles = StyleSheet.create({
     tabBar: {
-        backgroundColor: colors.mainColor2,
+        borderTopWidth:1,
+        borderTopColor: colors.darkColor,
+        backgroundColor: colors.secondaryColor1,
         shadowColor: colors.darkColor,
         elevation: 4,
         position: 'absolute',
-        bottom: 20,
-        left: 20,
-        right: 20,
-        borderRadius: 10,
-        height: 120
+        height: 120,
+        
     }
 })

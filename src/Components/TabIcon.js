@@ -10,8 +10,8 @@ const TabIcon = ({ focused, title, iconName }) => {
                 size={40}
                 color={
                     focused ?
-                        'black' :
-                        colors.secondaryColor1} />
+                        colors.darkColor :
+                        colors.clearColor} />
             <Text style={styles.text}>{title}</Text>
         </View>
     )

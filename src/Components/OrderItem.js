@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { Feather } from "@expo/vector-icons"
 import { colors } from '../Global/colors';
@@ -15,7 +15,12 @@ const OrderItem = ({ order }) => {
                 <Text style={styles.text}>Total ${total}</Text>
 
             </View>
-            <Feather name="search" size={25} color='black' />
+            <Pressable onPress={() => {
+                //ToDo: Agregar navigate a mostrar lista de productos comprados
+                //console.log(order)
+            }}>
+                <Feather name="search" size={25} color='black' />
+            </Pressable>
         </View>
     )
 }

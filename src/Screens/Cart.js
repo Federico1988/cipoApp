@@ -33,26 +33,30 @@ const Cart = () => {
 
   return (
     <View style={styles.container}>
+      {cart.items.length == 0 ?
+        <Text style={styles.textStyle}>No items added yet!</Text>
+        : null}
       <FlatList
         data={cart.items}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => <CartItem item={item} />}
       />
-      <View style={styles.totalContainer}>
-        <Text style={styles.text}>Total: ${cart.total}</Text>
-        <Pressable
-          onPress={() => handleOrderConfirmation()}
-          style={[
-            styles.text,
-            styles.confirmButton,
-            isConfirmButtonDisabled && styles.disabledButton,
-          ]}
-          disabled={isConfirmButtonDisabled}
-        >
-          <Text style={styles.confirmText}>Confirmar</Text>
-        </Pressable>
-      </View>
-
+      {cart.items.length > 0 ?
+        <View style={styles.totalContainer}>
+          <Text style={styles.text}>Total: ${cart.total}</Text>
+          <Pressable
+            onPress={() => handleOrderConfirmation()}
+            style={[
+              styles.text,
+              styles.confirmButton,
+              isConfirmButtonDisabled && styles.disabledButton,
+            ]}
+            disabled={isConfirmButtonDisabled}
+          >
+            <Text style={styles.confirmText}>Confirmar</Text>
+          </Pressable>
+        </View>
+        : null}
       <Modal
         animationType="slide"
         transparent={true}
@@ -77,6 +81,14 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingBottom: 140,
     backgroundColor: colors.secondaryColor2
+  },
+  textStyle: {
+    color: colors.darkColor,
+    fontWeight: '500',
+    fontSize: 22,
+    marginTop: 50,
+    width: "100%",
+    textAlign: 'center'
   },
   totalContainer: {
     backgroundColor: colors.mainColor2,

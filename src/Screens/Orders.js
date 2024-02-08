@@ -46,7 +46,7 @@ export default Orders
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.secondaryColor1
+        backgroundColor: colors.secondaryColor2
     },
     flatList: {
         flex: 1,

@@ -1,4 +1,4 @@
-import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { FlatList, ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 import Search from '../Components/Search';
 import ProductItem from '../Components/ProductItem';
 import { useEffect, useState } from 'react';
@@ -20,7 +20,7 @@ const ItemListCategories = ({ navigation, route }) => {
             const filteredProducts = arrayData.filter(product => product.title.toLowerCase().includes(keyword.toLowerCase()));
             setProducts(filteredProducts);
         }
-    }, [keyword, data]);
+    }, [keyword, data, isLoading]);
 
     const handleEndReached = () => {
         setIsAtEnd(true);
@@ -33,16 +33,20 @@ const ItemListCategories = ({ navigation, route }) => {
         <>
             <Search keyword={keyword} setKeyword={setKeyword} />
             <View style={styles.container}>
-                <FlatList
-                    style={styles.flatListStyle}
-                    data={products}
-                    keyExtractor={item => item.id}
-                    renderItem={({ item }) => <ProductItem navigation={navigation} route={route} item={item} />}
-                    onEndReached={handleEndReached}
-                    onScroll={handleScroll}
-                    onEndReachedThreshold={0.1}
-                />
-                {!isAtEnd && <Text style={styles.scrollMessage}>Scroll for more</Text>}
+                {isLoading ? (
+                    <ActivityIndicator size="large" color={colors.mainColor1} style={styles.loadingIndicator} />
+                ) : (
+                    <FlatList
+                        style={styles.flatListStyle}
+                        data={products}
+                        keyExtractor={item => item.id}
+                        renderItem={({ item }) => <ProductItem navigation={navigation} route={route} item={item} />}
+                        onEndReached={handleEndReached}
+                        onScroll={handleScroll}
+                        onEndReachedThreshold={0.1}
+                    />
+                )}
+                {(!isAtEnd && !isLoading) && <Text style={styles.scrollMessage}>Scroll for more</Text>}
             </View>
         </>
     );
@@ -54,7 +58,7 @@ const styles = StyleSheet.create({
     container: {
         width: "100%",
         height: "100%",
-        backgroundColor: colors.secondaryColor1,
+        backgroundColor: colors.secondaryColor2,
     },
     flatListStyle: {
         maxHeight: 500,
@@ -63,5 +67,8 @@ const styles = StyleSheet.create({
         paddingLeft: 30,
         fontSize: 20,
         color: colors.clearColor,
+    },   
+     loadingIndicator: {
+        marginTop: 50,
     },
 });
