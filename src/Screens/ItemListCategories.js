@@ -64,11 +64,12 @@ const styles = StyleSheet.create({
         maxHeight: 500,
     },
     scrollMessage: {
+        marginTop: 10,
         paddingLeft: 30,
         fontSize: 20,
         color: colors.clearColor,
-    },   
-     loadingIndicator: {
+    },
+    loadingIndicator: {
         marginTop: 50,
     },
 });

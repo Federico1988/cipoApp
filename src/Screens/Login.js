@@ -36,7 +36,6 @@ const Login = ({ navigation }) => {
     return (
         <View style={styles.main}>
             <View style={styles.container}>
-                <Text style={styles.title}>Login!</Text>
                 <InputForm
                     label="email"
                     value={email}
@@ -65,6 +64,7 @@ export default Login
 
 const styles = StyleSheet.create({
     container: {
+        marginTop: 50,
         width: '100%',
         alignItems: 'center',
     },
@@ -78,10 +78,10 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     sub: {
-        marginTop: 10,
+        marginTop: 40,
     },
     sublink: {
-        marginTop: 10,
+        marginTop: 20,
         color: 'blue',
         textDecorationLine: 'underline',
     },
