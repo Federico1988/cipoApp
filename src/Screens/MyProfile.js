@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View, Image } from 'react-native';
+import { Pressable, StyleSheet, Text, View, Image, ActivityIndicator } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useGetUserLocationQuery } from '../app/sevices/shopServices';
 import { useSelector } from 'react-redux';
@@ -12,7 +12,7 @@ const MyProfile = ({ navigation }) => {
   const dispatch = useDispatch();
   const localId = useSelector((state) => state.auth.value.localId);
   const emailAddress = useSelector((state) => state.auth.value.email);
-  const { data } = useGetUserLocationQuery(localId);
+  const { data, isLoading } = useGetUserLocationQuery(localId);
   const onLogout = () => {
     deleteAllSession();
     dispatch(clearUser());
@@ -28,7 +28,10 @@ const MyProfile = ({ navigation }) => {
 
       <View style={styles.fieldContainer}>
         <Text style={styles.label}>Address:</Text>
-        <Text style={styles.field}>{data?.address}</Text>
+        {isLoading ? (
+          <ActivityIndicator size="small" color={colors.mainColor1} style={styles.loadingIndicator} />
+        ) : (
+          <Text style={styles.field}>{data?.address}</Text>)}
       </View>
 
       <View style={styles.buttonsContainer}>
@@ -71,7 +74,7 @@ const styles = StyleSheet.create({
   label: {
     flex: 1,
     fontSize: 16,
-    fontWeight:'bold'
+    fontWeight: 'bold'
   },
   field: {
     flex: 2,
@@ -95,7 +98,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: colors.clearColor,
     fontSize: 18,
-    fontWeight:'bold'
+    fontWeight: 'bold'
   },
   logoutButton: {
     backgroundColor: '#e74c3c',
@@ -111,5 +114,8 @@ const styles = StyleSheet.create({
     height: 20,
     marginRight: 10,
     tintColor: colors.clearColor,
+  }, 
+  loadingIndicator: {
+    marginRight: 50,
   },
 });

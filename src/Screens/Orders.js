@@ -1,5 +1,4 @@
-import { StyleSheet, Text, View, FlatList } from 'react-native'
-import allOrders from "../Data/orders.json"
+import { StyleSheet, ActivityIndicator, View, FlatList } from 'react-native'
 import OrderItem from '../Components/OrderItem'
 import { useGetOrdersQuery } from '../app/sevices/shopServices';
 import { useEffect, useState } from 'react';
@@ -9,7 +8,7 @@ import { colors } from '../Global/colors';
 const Orders = () => {
 
     const localId = useSelector(state => state.auth.value.localId);
-    const { data: orders} = useGetOrdersQuery(localId);
+    const { data: orders, isLoading} = useGetOrdersQuery(localId);
     const [ordersArray, setOrdersArray] = useState([]);
 
  useEffect(() => {
@@ -28,16 +27,19 @@ const Orders = () => {
     });
 
     setOrdersArray(sortedOrdersArray);
-  }, [orders]);
+  }, [orders, isLoading]);
 
     return (
         <View style={styles.container}>
+            {isLoading ? (
+                    <ActivityIndicator size="large" color={colors.mainColor1} style={styles.loadingIndicator} />
+                ) : (
             <FlatList
                 style={styles.flatList}
                 data={ordersArray ? ordersArray : []}
                 keyExtractor={(item, index) => `${item.id}-${index}`}
                 renderItem={({ item }) => <OrderItem order={item} />}
-            />
+            />)}
         </View>
     )
 }
@@ -51,5 +53,8 @@ const styles = StyleSheet.create({
     flatList: {
         flex: 1,
         marginBottom: 180,
-    },
+    },   
+    loadingIndicator: {
+       marginTop: 50,
+   },
 });
