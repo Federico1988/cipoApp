@@ -15,12 +15,6 @@ const OrderItem = ({ order }) => {
                 <Text style={styles.text}>Total ${total}</Text>
 
             </View>
-            <Pressable onPress={() => {
-                //ToDo: Agregar navigate a mostrar lista de productos comprados
-                //console.log(order)
-            }}>
-                <Feather name="search" size={25} color='black' />
-            </Pressable>
         </View>
     )
 }
