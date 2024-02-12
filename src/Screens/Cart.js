@@ -52,7 +52,7 @@ const Cart = () => {
             ]}
             disabled={isConfirmButtonDisabled}
           >
-            <Text style={styles.confirmText}>Confirmar</Text>
+            <Text style={styles.confirmText}>Confirm</Text>
           </Pressable>
         </View>
         : null}
