@@ -17,5 +17,3 @@ Descripcion de componentes
 
 
 
-Navegabilidad: 
-![Gif Navegabilidad](https://github.com/Federico1988/fCipolletta-react/assets/26264807/99bdbd6f-0191-47e5-b36e-f551d9d22e50)
