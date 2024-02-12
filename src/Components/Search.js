@@ -27,7 +27,7 @@ const Search = ({ setKeyword }) => {
     return (
         <View style={styles.container}>
             <View style={styles.searchContainer}>
-                <TextInput style={width > 350 ? styles.inputMax : styles.inputMin} placeholder='Buscar' value={input} onChangeText={(t) => setInput(t)} />
+                <TextInput style={width > 350 ? styles.inputMax : styles.inputMin} placeholder='Search' value={input} onChangeText={(t) => setInput(t)} />
                 <Pressable onPress={() => { search() }}>
                     <AntDesign name='search1' color='black' size={width > 350 ? 40 : 20} />
                 </Pressable>
