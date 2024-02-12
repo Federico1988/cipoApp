@@ -3,7 +3,7 @@
 
 Descripcion general: 
 
-La App esta organizada en Screens con Componentes, usando TabNavigator. Tiene conexion a Firebase de donde obtiene los productos ordenados por categoria, y tambien almacena los datos de usuario, incluyendo mail, direccion obtenida con GoogleApi y las ordenes realizadas. Usa SQLite local para mantener la sesion de usuario activa aunque se cierre la App.
+La App esta organizada en Screens con Componentes, usando TabNavigator. Tiene conexion a Firebase de donde obtiene los productos ordenados por categoria, y tambien almacena los datos de usuario, incluyendo mail, direccion obtenida con GoogleApi y las ordenes realizadas. Usa SQLite local para mantener la sesion de usuario activa aunque se cierre la App. Usa Redux para manejo de estado.
 
 
 Descripcion de algunos componentes
