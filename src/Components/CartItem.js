@@ -34,7 +34,7 @@ const CartItem = ({ item }) => {
             <View style={styles.textContainer}>
                 <Text style={styles.title}>{item.title}</Text>
                 <Text style={styles.brand}>{item.brand}</Text>
-                <Text style={styles.price}>Cantidad: {item.quantity} - ${item.price}</Text>
+                <Text style={styles.price}>Quantity: {item.quantity} - ${item.price}</Text>
             </View>
             <Pressable onPress={confirmDelete}>
                 <Entypo name='trash' size={30} color='black' />

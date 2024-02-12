@@ -16,7 +16,7 @@ Descripcion de algunos componentes
 | Tab: Shop | Componente Categories -> Muestra categorias que las trae de firebase |
 | Tab: Shop | Componente ItemListCategory -> Muestra los productos que pertenecen a la categoria seleccionada. Permite filtrar con un campo de busqueda |
 | Tab: Shop | Componente ItemDetail -> Muestra el detalle del producto seleccionado, y permite "Agregar al carrito" |
-| Tab: Cart | Muestra lista de productos agregados, que se pueden tambien quitar, y permite finalizar la compra |
+| Tab: Cart | Muestra lista de productos agregados, suma total de precios, y permite finalizar la compra. Se pueden eliminar items individualmente |
 | Tab: Orders | Muestra ordenes ya realizadas |
 | Tab: Profile | Componente "Profile" -> Muestra direccion de mail de usuario, y permite agregar domicilio. Tambien permite desloguearse  |
 | Tab: Profile | Componente "Address" -> Confirma direccion obtenida mediante GoogleApi  |
