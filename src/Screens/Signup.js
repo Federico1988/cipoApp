@@ -84,7 +84,7 @@ const Signup = ({ navigation }) => {
                     errorMsg={errorConfPassword}
                 />
                 <SubmitButton title="Send" onPress={onSubmit} />
-                <Text style={styles.sub}>Alreadt signedup?</Text>
+                <Text style={styles.sub}>Already signedup?</Text>
                 <Pressable onPress={() => navigation.navigate("Login")}>
                     <Text style={styles.sublink} >then Login!</Text>
                 </Pressable>
