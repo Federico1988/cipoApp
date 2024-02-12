@@ -9,7 +9,6 @@ const MapPreview = ({ latitude, longitude }) => {
     &maptype=roadmap
     &markers=color:red%7Clabel:U%7C${latitude},${longitude}
     &key=${googleApi.mapStatic}`
-    //console.log(mapPreviewUrl)
     return (
         <Image style={styles.image} source={latitude ? { uri: mapPreviewUrl } : require("../../assets/map.jpeg")} />
 

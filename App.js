@@ -28,19 +28,6 @@ export default function App() {
       <Provider store={store}>
         <MainNavigator />
       </Provider>
-
-      {/*<SafeAreaView style={styles.container}>
-
-         <Header setSelectedCategory={setSelectedCategory} title={headerTitle} />
-        {selectedCategory ?
-          (<ItemListCategories
-            category={selectedCategory}
-            setSelectedCategory={setSelectedCategory}
-            setHeaderTitle={setHeaderTitle}
-            setProductDetailId={setProductDetailId}
-          />) :
-          (<Home setSelectedCategory={setSelectedCategory} setHeaderTitle={setHeaderTitle} />)} 
-      </SafeAreaView >*/}
     </>
   );
 }

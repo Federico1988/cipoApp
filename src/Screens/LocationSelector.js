@@ -16,7 +16,6 @@ const LocationSelector = ({ navigation }) => {
     const [triggerPostUserLocation, { data, isSuccess, isError, error }] = usePostUserLocationMutation();
 
     useEffect(() => {
-        //if (isSuccess) console.log(data);
         if (isError) console.log(error);
 
     }, [data, isSuccess, isError, error]);
@@ -63,7 +62,6 @@ const LocationSelector = ({ navigation }) => {
                 ...location
             }
             const data = await triggerPostUserLocation({ localId, locationFormatted });
-            //console.log(data);
 
             navigation.goBack();
 
@@ -82,9 +80,9 @@ const LocationSelector = ({ navigation }) => {
                     <Text style={styles.text}>{errorMsg ? errorMsg : address}</Text>
                     <MapPreview latitude={location.latitude} longitude={location.longitude} />
                     <Pressable
-                        style={[styles.button, errorMsg && styles.disabledButton]} // Apply additional styles for the disabled state
+                        style={[styles.button, errorMsg && styles.disabledButton]} 
                         onPress={onConfirmAddress}
-                        disabled={!!errorMsg} // Set disabled to true if errorMsg is truthy
+                        disabled={!!errorMsg} 
                     >
                         <Text style={styles.buttonText}>Confirm address</Text>
                     </Pressable>

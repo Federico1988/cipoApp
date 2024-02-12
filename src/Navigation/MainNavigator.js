@@ -18,7 +18,6 @@ const MainNavigator = () => {
                 const session = await fetchSession();
                 if (session.rows.length) {
                     const user = session.rows._array[0];
-                    //console.log("User from db", user)
                     dispatch(setUser(user));
                 }
             } catch (error) {

@@ -12,8 +12,6 @@ const Orders = () => {
     const [ordersArray, setOrdersArray] = useState([]);
 
  useEffect(() => {
-    //console.log('Data from db');
-    //console.log(orders);
 
     const flattenedOrders = Object.values(orders || {}).flat();
 
